@@ -1,0 +1,33 @@
+In terminal:-
+
+-----------------------------------------------------------
+docker-compose up -d
+
+This will start Kafka and Zookeeper in the background.
+-----------------------------------------------------------
+
+Check if Kafka, Zookeeper is running
+docker ps
+
+-----------------------------------------------------------
+Create a Kafka topic - realtime_data
+docker exec -it kafka kafka-topics --create --topic realtime_data --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+-----------------------------------------------------------
+
+Verify the topic is created
+docker exec -it kafka kafka-topics --list --bootstrap-server localhost:9092
+
+-----------------------------------------------------------
+pip install kafka-python
+-----------------------------------------------------------
+
+Create Kafka Producer - To Send data to Kafka
+Terminal:-
+python kafka-producer.py
+-----------------------------------------------------------
+
+Create Kafka Consumer - To Read data from Kafka
+Terminal:-
+python kafka-consumer.py
+-----------------------------------------------------------
+
